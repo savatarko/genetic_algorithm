@@ -36,7 +36,6 @@ public class Chromosone {
     }
     public static Chromosone crossover(Chromosone c1, Chromosone c2)
     {
-        Set<Point> set;
 
 
         Chromosone chromosone = new Chromosone();
@@ -53,11 +52,6 @@ public class Chromosone {
             if(Point.isDummy(chromosone.genes.get(i)) && !chromosone.genes.contains(c2.genes.get(i)))
             {
                 chromosone.genes.set(i, c2.genes.get(i));
-                set = new HashSet<Point>(chromosone.genes);
-                if(set.size() != chromosone.genes.size())
-                {
-                    System.out.println("ovde je greska :)");
-                }
             }
         }
         for(var i : c1.genes)
@@ -71,27 +65,11 @@ public class Chromosone {
                         chromosone.genes.set(j,i);
                         j=chromosone.genes.size() + 1;
 
-
-                        set = new HashSet<Point>(chromosone.genes);
-                        if(set.size() != chromosone.genes.size())
-                        {
-                            System.out.println("ovde je greska :)");
-                        }
-
                     }
                 }
             }
         }
         chromosone.calculateFitness();
-        if(1/chromosone.fitness == 0.0)
-            roll1 = -1;
-        //TESTIRANJE
-        set = new HashSet<Point>(chromosone.genes);
-        if(set.size() != chromosone.genes.size())
-        {
-            System.out.println("ovde je greska :)");
-        }
-
         return chromosone;
     }
     public static Chromosone mutate(Chromosone chromosone)

@@ -39,11 +39,14 @@ public class Main {
         Generation a = new Generation();
         int n = 20;
         int counter = 0;
-        while(n>0 && counter < 10000)
+        double min = Integer.MAX_VALUE;
+        while(n>0 && counter < 15000)
         {
             double prev = a.population.get(0).fitness;
             a = new Generation(a);
-            System.out.println("Generation #" + counter + " d=" + 1/a.population.get(0).fitness);
+            double dis = 1/a.population.get(0).fitness;
+            min = Double.min(min, dis);
+            System.out.println("Generation #" + counter + " d=" + dis + " best=" + min);
             if(Math.abs(prev-a.population.get(0).fitness) < 0.00000000001)
                 n--;
             else n = 20;

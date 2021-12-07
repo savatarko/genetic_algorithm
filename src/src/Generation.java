@@ -59,8 +59,11 @@ public class Generation {
             roll -= generation.population.get(0).fitness;
             int index = 1;
             while (roll > 0) {
+                /*
                 if(index == generation.population.size())
                     break;
+
+                 */
                 roll -= generation.population.get(index).fitness;
                 index++;
             }
@@ -73,8 +76,11 @@ public class Generation {
                 roll -= generation.population.get(0).fitness;
                 int index1 = 1;
                 while (roll > 0) {
+                    /*
                     if(index1 == generation.population.size())
                         break;
+
+                     */
                     roll -= generation.population.get(index1).fitness;
                     index1++;
                 }
@@ -92,10 +98,7 @@ public class Generation {
             else chromosone = generation.population.get(index);
             //mutation
             double mutationroll = random.nextDouble();
-            if(mutationroll <= mutation_chance)
-            {
                 chromosone = Chromosone.mutate(chromosone);
-            }
             if(1/chromosone.fitness == 0.0) {
 
                 //System.out.println("ERROR");
