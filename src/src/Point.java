@@ -29,6 +29,11 @@ public class Point {
         }
     }
 
+    public Point(int x,int y)
+    {
+        pointc.add(x);
+        pointc.add(y);
+    }
     public List<Integer> getPointc() {
         return pointc;
     }
@@ -43,7 +48,19 @@ public class Point {
         return Math.sqrt(result);
     }
 
-        /*
+    @Override
+    public String toString() {
+        String output = "(";
+        for(var i : pointc)
+        {
+            output = output.concat(i + ",");
+        }
+        output = output.substring(0,output.length() - 1);
+        output = output.concat(")");
+        return output;
+    }
+
+    /*
     @Override
     public boolean equals(Object o) {
         for(int i = 0;i<this.pointc.size();i++)

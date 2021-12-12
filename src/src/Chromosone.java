@@ -36,13 +36,11 @@ public class Chromosone {
     }
     public static Chromosone crossover(Chromosone c1, Chromosone c2)
     {
-
-
         Chromosone chromosone = new Chromosone();
         Random random = new Random();
         int roll1, roll2;
-        roll1 = random.nextInt(c1.genes.size() - 1);
-        roll2 = random.nextInt(c1.genes.size()-roll1);
+        roll1 = random.nextInt(c1.genes.size() - 2);
+        roll2 = random.nextInt(c1.genes.size()-roll1) + 1;
         for(int i = roll1;i<roll1 + roll2;i++)
         {
             chromosone.genes.set(i, c1.genes.get(i));

@@ -47,15 +47,18 @@ public class Generation {
         Random random = new Random();
         double roll = 0;
         double totalchance = 0;
+        //int elitesize = size * 5 / 100;
+        int elitesize = 1;
         for(var i : generation.population)
         {
             totalchance +=i.fitness;
         }
-        int testt = 5;
+      //  for(int i = 0; i <elitesize; i++)
+            population.add(generation.population.get(0));
         for(int i = 0;i< size;i++) {
-
+            boolean hasCrossedover = false;
             //selection
-            roll = 0 + totalchance * random.nextDouble()/2;
+            roll = 0 + totalchance * random.nextDouble()/1.33;
             roll -= generation.population.get(0).fitness;
             int index = 1;
             while (roll > 0) {
@@ -72,7 +75,8 @@ public class Generation {
             double crossoverroll = random.nextDouble();
             Chromosone chromosone;
             if (crossoverroll <= crossover_chance) {
-                roll = 0 + totalchance * random.nextDouble()/2;
+                hasCrossedover = true;
+                roll = 0 + totalchance * random.nextDouble()/1.33;
                 roll -= generation.population.get(0).fitness;
                 int index1 = 1;
                 while (roll > 0) {
@@ -97,15 +101,13 @@ public class Generation {
             }
             else chromosone = generation.population.get(index);
             //mutation
-            double mutationroll = random.nextDouble();
-                chromosone = Chromosone.mutate(chromosone);
-            if(1/chromosone.fitness == 0.0) {
-
-                //System.out.println("ERROR");
+            //if(index>=elitesize && hasCrossedover)
+            chromosone = Chromosone.mutate(chromosone);
+            if(1/chromosone.fitness == 0.0 || population.contains(chromosone)) {
                 i--;
             }
             else population.add(chromosone);
-            this.sortgen();
         }
+        this.sortgen();
     }
 }
