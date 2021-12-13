@@ -13,10 +13,6 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         try (Scanner scanner = new Scanner(System.in)) {
-
-            System.out.println("Broj hromozona u generaciji?");
-            Generation.size = scanner.nextInt();
-
             System.out.println("Broj tacaka?");
             Chromosone.size = scanner.nextInt();
 
@@ -25,6 +21,9 @@ public class Main {
 
             System.out.println("Max?");
             Point.max = scanner.nextInt();
+
+            System.out.println("Broj hromozona u generaciji?");
+            Generation.size = scanner.nextInt();
 
             System.out.println("Sansa mnozenja");
             Generation.crossover_chance = scanner.nextDouble();
