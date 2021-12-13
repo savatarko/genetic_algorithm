@@ -54,7 +54,7 @@ public class Generation {
             totalchance +=i.fitness;
         }
       //  for(int i = 0; i <elitesize; i++)
-            population.add(generation.population.get(0));
+            //population.add(generation.population.get(0));
         for(int i = 0;i< size;i++) {
             boolean hasCrossedover = false;
             //selection
